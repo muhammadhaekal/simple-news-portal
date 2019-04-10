@@ -39,7 +39,10 @@ const ThumbnailContainer = styled.div({
   borderRadius: "5px",
   display: "grid",
   gridTemplateColumns: "70% 30%",
-  marginBottom: "15px"
+  marginBottom: "15px",
+  "&:hover": {
+    cursor: "pointer"
+  }
 });
 
 const NewsDetail = styled.div({

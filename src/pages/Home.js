@@ -47,7 +47,10 @@ const SelectCategory = styled.select({
   backgroundColor: "lightgrey",
   borderRadius: "5px",
   fontSize: "14px",
-  padding: "4px"
+  padding: "4px",
+  "&:hover": {
+    cursor: "pointer"
+  }
 });
 
 export default Home;
