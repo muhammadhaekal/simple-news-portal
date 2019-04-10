@@ -2,11 +2,59 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 class App extends Component {
+  componentDidMount() {}
+
   render() {
     return (
       <MainContainer>
         <FilterBox>1</FilterBox>
         <ListNewsContainer>
+          <NewsThumbnail>
+            <NewsDetail>
+              <NewsTitle>Mobil Masuk Jurang</NewsTitle>
+              <span>
+                <b>Author :</b> Joni <b>Source :</b> Kumparan <span />
+              </span>
+              <NewsThumbParagraph>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Architecto ex accusamus sequi, voluptatum distinctio rem
+                cupiditate consequatur quae totam ad non at id. Pariatur tempora
+                odio nemo adipisci, sunt laborum. Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Ab, molestiae. Voluptatibus,
+                voluptatem dicta nostrum, nihil hic fuga ratione voluptates et
+                perspiciatis nam assumenda! Commodi obcaecati quam soluta
+                adipisci iusto mollitia! Lorem ipsum dolor sit, amet consectetur
+                adipisicing elit. Enim nam nobis voluptatum minima at, facere
+                rerum culpa distinctio similique vitae consequatur impedit ipsa
+                autem iste fuga deserunt quos dolor maxime.
+                <FadeEffect />
+              </NewsThumbParagraph>
+            </NewsDetail>
+            <ImgThumbnail />
+          </NewsThumbnail>
+          <NewsThumbnail>
+            <NewsDetail>
+              <NewsTitle>Mobil Masuk Jurang</NewsTitle>
+              <span>
+                <b>Author :</b> Joni <b>Source :</b> Kumparan <span />
+              </span>
+              <NewsThumbParagraph>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Architecto ex accusamus sequi, voluptatum distinctio rem
+                cupiditate consequatur quae totam ad non at id. Pariatur tempora
+                odio nemo adipisci, sunt laborum. Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Ab, molestiae. Voluptatibus,
+                voluptatem dicta nostrum, nihil hic fuga ratione voluptates et
+                perspiciatis nam assumenda! Commodi obcaecati quam soluta
+                adipisci iusto mollitia! Lorem ipsum dolor sit, amet consectetur
+                adipisicing elit. Enim nam nobis voluptatum minima at, facere
+                rerum culpa distinctio similique vitae consequatur impedit ipsa
+                autem iste fuga deserunt quos dolor maxime.
+                <FadeEffect />
+              </NewsThumbParagraph>
+            </NewsDetail>
+            <ImgThumbnail />
+          </NewsThumbnail>
           <NewsThumbnail>
             <NewsDetail>
               <NewsTitle>Mobil Masuk Jurang</NewsTitle>
