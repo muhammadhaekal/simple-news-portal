@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import NewsThumbnail from "./Components/NewsThumbnail";
+import { Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import DetailArticle from "./pages/DetailArticle";
+
 class App extends Component {
   state = {
-    articles: []
+    articles: [],
+    article: {},
+    category: ""
   };
 
   componentDidMount() {
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=1d46de04e38a4c14946080b7164e9f28`
+        `https://newsapi.org/v2/top-headlines?country=us&apiKey=1d46de04e38a4c14946080b7164e9f28`
       )
       .then(({ data: { articles } }) => {
         this.setState({
@@ -21,30 +26,62 @@ class App extends Component {
         console.log(err);
       });
   }
+  // &category=business
+  setCategory = category => {
+    axios
+      .get(
+        `https://newsapi.org/v2/top-headlines?country=us&apiKey=1d46de04e38a4c14946080b7164e9f28`
+      )
+      .then(({ data: { articles } }) => {
+        this.setState({
+          articles
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  setArticle = article => {
+    console.log(article);
+    this.setState({
+      article: article
+    });
+  };
+
+  handleOnChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
 
   render() {
-    const { articles } = this.state;
+    const { articles, article, category } = this.state;
 
     return (
-      <MainContainer>
-        <FilterBox>1</FilterBox>
-        <ListNewsContainer>
-          {articles.map((article, i) => (
-            <NewsThumbnail {...article} />
-          ))}
-        </ListNewsContainer>
-      </MainContainer>
+      <div>
+        <h2> Home / About </h2>
+        <hr />
+        <Route
+          path="/"
+          exact
+          component={() => (
+            <Home
+              articles={articles}
+              setArticle={this.setArticle}
+              setCategory={this.setCategory}
+              category={category}
+              handleOnChange={this.handleOnChange}
+            />
+          )}
+        />
+        <Route
+          path="/news/:id"
+          component={() => <DetailArticle article={article} />}
+        />
+      </div>
     );
   }
 }
-
-const MainContainer = styled.div({
-  display: "grid",
-  gridTemplateColumns: "15% 70% 15%"
-});
-
-const ListNewsContainer = styled.div({});
-
-const FilterBox = styled.div({});
 
 export default App;

@@ -1,19 +1,27 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 const NewsThumbnail = ({
   title,
   author,
   description,
   urlToImage,
-  source: { name }
+  source,
+  setArticle,
+  history
 }) => {
+  const setArticleAndRedirect = () => {
+    setArticle();
+    history.push("/news");
+  };
   return (
-    <ThumbnailContainer>
+    <ThumbnailContainer onClick={() => setArticleAndRedirect()}>
       <NewsDetail>
         <NewsTitle>{title}</NewsTitle>
         <span>
-          <b>Author :</b> {author} - <b>Source :</b> {name} <span />
+          <b>Author :</b> {author} - <b>Source :</b> {source && source.name}{" "}
+          <span />
         </span>
         <NewsThumbParagraph>
           {description}
@@ -41,8 +49,6 @@ const NewsDetail = styled.div({
 });
 
 const ImgThumbnail = styled.div({
-  //   backgroundImage:
-  //     "url(https://thumbor.forbes.com/thumbor/600x315/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1140163617%2F960x0.jpg%3Ffit%3Dscale)",
   backgroundSize: "cover",
   borderRadius: "5px",
   height: "200px"
@@ -70,4 +76,4 @@ const FadeEffect = styled.span({
     "linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9) 100%) "
 });
 
-export default NewsThumbnail;
+export default withRouter(NewsThumbnail);
