@@ -9,18 +9,76 @@ const NewsThumbnail = ({
   urlToImage,
   source,
   setArticle,
-  history
+  history,
+  publishedAt
 }) => {
   const setArticleAndRedirect = () => {
     setArticle();
     history.push("/news");
   };
+
+  const getDateDescription = publishedAt => {
+    console.log(publishedAt);
+    const date = new Date(publishedAt);
+
+    const dMonth = date.getMonth();
+    const dYear = date.getFullYear();
+    const dDay = date.getDate();
+
+    const day = dDay + 1;
+    let month = dMonth + 1;
+
+    switch (month) {
+      case 1:
+        month = "Jan";
+        break;
+      case 2:
+        month = "Feb";
+        break;
+      case 3:
+        month = "Mar";
+        break;
+      case 4:
+        month = "Apr";
+        break;
+      case 5:
+        month = "May";
+        break;
+      case 6:
+        month = "Jun";
+        break;
+      case 7:
+        month = "Jul";
+        break;
+      case 8:
+        month = "Aug";
+        break;
+      case 9:
+        month = "Sep";
+        break;
+      case 10:
+        month = "Dec";
+        break;
+      case 11:
+        month = "Nov";
+        break;
+      case 12:
+        month = "Dec";
+        break;
+      default:
+        month = "";
+    }
+
+    return `${day} ${month} ${dYear}`;
+  };
+
   return (
     <ThumbnailContainer onClick={() => setArticleAndRedirect()}>
       <NewsDetail>
         <NewsTitle>{title}</NewsTitle>
         <span>
-          <b>Author :</b> {author} - <b>Source :</b> {source && source.name}{" "}
+          <b>Author :</b> {author} - <b>Source :</b> {source && source.name} |{" "}
+          {getDateDescription(publishedAt)}
           <span />
         </span>
         <NewsThumbParagraph>
