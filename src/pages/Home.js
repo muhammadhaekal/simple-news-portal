@@ -11,13 +11,10 @@ const Home = ({ articles, setArticle, category, handleOnChange }) => {
           value={category}
           onChange={handleOnChange}
         >
-          <option value="">Pick Category</option>
-          <option value="business">Business</option>
+          <option value="">All Category</option>
           <option value="technology">Technology</option>
-          <option value="entertaiment">Entertaiment</option>
-          <option value="sports">Sports</option>
-          <option value="health">Health</option>
           <option value="science">Science</option>
+          <option value="business">Business</option>
           <option value="general">General</option>
         </SelectCategory>
       </FilterBox>
@@ -36,7 +33,7 @@ const Home = ({ articles, setArticle, category, handleOnChange }) => {
 
 const MainContainer = styled.div({
   display: "grid",
-  gridTemplateColumns: "15% 70% 15%"
+  gridTemplateColumns: "20% 60% 20%"
 });
 
 const ListNewsContainer = styled.div({});

@@ -13,7 +13,7 @@ const DetailArticle = ({
       </span>
       <p>
         <ImgContainer>
-          <img src={urlToImage} alt="" />
+          <ArticleImg style={{ backgroundImage: `url(${urlToImage})` }} />
         </ImgContainer>
       </p>
       <p>{description}</p>
@@ -28,6 +28,12 @@ const MainContainer = styled.div({
 const ImgContainer = styled.div({
   display: "flex",
   justifyContent: "center"
+});
+
+const ArticleImg = styled.div({
+  width: "600px",
+  height: "250px",
+  backgroundSize: "cover"
 });
 
 export default DetailArticle;

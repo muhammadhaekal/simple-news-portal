@@ -35,7 +35,7 @@ const NewsThumbnail = ({
 
 const ThumbnailContainer = styled.div({
   padding: "15px",
-  border: "2px solid grey",
+  border: "2px solid lightgrey",
   borderRadius: "5px",
   display: "grid",
   gridTemplateColumns: "70% 30%",

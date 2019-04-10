@@ -26,13 +26,18 @@ class App extends Component {
         console.log(err);
       });
   }
-  // &category=business
-  setCategory = category => {
+
+  setCategory = () => {
+    const { category } = this.state;
+
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?country=us&apiKey=1d46de04e38a4c14946080b7164e9f28`
+        `https://newsapi.org/v2/top-headlines?country=us&${
+          category === "" ? "" : `category=${category}&`
+        }apiKey=1d46de04e38a4c14946080b7164e9f28`
       )
       .then(({ data: { articles } }) => {
+        console.log(articles);
         this.setState({
           articles
         });
@@ -43,11 +48,16 @@ class App extends Component {
   };
 
   setArticle = article => {
-    console.log(article);
     this.setState({
       article: article
     });
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.category !== this.state.category) {
+      this.setCategory();
+    }
+  }
 
   handleOnChange = e => {
     this.setState({
@@ -60,8 +70,10 @@ class App extends Component {
 
     return (
       <div>
-        <h2> Home / About </h2>
-        <hr />
+        <NavBar>
+          <Link to="/">Home</Link>
+        </NavBar>
+        <HrLine />
         <Route
           path="/"
           exact
@@ -72,16 +84,30 @@ class App extends Component {
               setCategory={this.setCategory}
               category={category}
               handleOnChange={this.handleOnChange}
+              setCategory={this.setCategory}
             />
           )}
         />
         <Route
-          path="/news/:id"
+          path="/news"
           component={() => <DetailArticle article={article} />}
         />
       </div>
     );
   }
 }
+
+const NavBar = styled.h2({
+  textAlign: "center"
+});
+
+const HrLine = styled.hr({
+  display: "block",
+  height: "1px",
+  border: "0",
+  borderTop: "2px solid lightgrey",
+  margin: "1em 0",
+  padding: "0"
+});
 
 export default App;
