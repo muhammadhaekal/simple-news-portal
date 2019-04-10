@@ -6,6 +6,11 @@
 1. Styled Component
 1. Axios
 
+## Setup Requirement
+
+1. NodeJs
+2. NPM
+
 ## Setup
 
 ```sh
