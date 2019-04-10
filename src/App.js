@@ -84,7 +84,6 @@ class App extends Component {
               setCategory={this.setCategory}
               category={category}
               handleOnChange={this.handleOnChange}
-              setCategory={this.setCategory}
             />
           )}
         />
